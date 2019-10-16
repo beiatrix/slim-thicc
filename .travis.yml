@@ -15,14 +15,16 @@ install:
 before_script:
   - psql -c 'create database "slim-thicc-test";' -U postgres # remember to change this name if you change it elsewhere (e.g. package.json)
 script:
-  - npm test             # test the code
+  - npm test # test the code
   - npm run build-client # make the bundle
-
-# before_deploy:
-#   - rm -rf node_modules # omit from the tarball, since we skip cleanup
-# deploy:
-#   skip_cleanup: true # prevents travis from deleting the build
-#   provider: heroku
-#   app: YOUR-HEROKU-APP-NAME-HERE # see README
-#   api_key:
-#     secure: YOUR-***ENCRYPTED***-API-KEY-HERE # see README
+before_deploy: # omit node_modules, since we set skip_cleanup below
+  - rm -rf node_modules
+deploy: # see README for details on these keys
+  # prevents travis from deleting the build
+  skip_cleanup: true
+  provider: heroku
+  # app should be your heroku app name; see README
+  app: slim-thicc
+  # the secure key indicates an encrypted value; see README
+  api_key:
+    secure: h1iQSA2zTn79+SfI+oMz8C8eI5hw0oNr0XciNDe9sBCL9cleDmh1F/5d2U9uEWKUQPQB1//4Kf5UVkeat1AMaa6TipsjsyG9kRfP64Od30WywgzvaeSqUfaWWY5SvKc5hj2LwM7dTfaTWeIsPcOwfhm7TyuN9EfzdDyrC7/LSXqGFttpnFlLgwYFFlvB4c0O3YUjQtU6HAQGMFuKllTatW3TCXh16O5uT+T2x/3zKoD7/WkxswR6XNrQxjknkC5k0iKwLmdVa4UFXXynFgnXciERRe7YyROkjxM+iQ+7R3WO8TXqRg8HrdZD2cD76jwoMjd/B499OiFFu72iEj4zH8JgiIX5R6ncXxHLD+iVy03juHQ4JATA9bxYEdBEEsdP+VdeLb9LBOuZvPP3yWa/l09om8uG3UlFv9hq2fzHU9p7tn55ucRXtEJ0zgZJ60WW10TGBAJ/YCyy2jri4iNbzpimQz2FhDpUMTJwJkufvqI+/qR8nuC72xReOXcjQgTs4oQWx1qgLVhH0uUHjpSBWn6HZILn1rOYIuryFihEy4FcDjtTw4/Gt5e24JwdUxiDJ7eVtrZpQy+/MMrdJugc4mi2vaBSrGnOZF7ypG3x5XhKJqkevFcl2YnbTKtEiyy3m0YHKzaOCWyIszfxD7ExBWFHgAd8psGvqp0xrwWuFn0=

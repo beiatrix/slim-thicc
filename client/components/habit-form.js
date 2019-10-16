@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import styled from 'styled-components'
+import axios from 'axios'
 
 export default () => {
   const [habit, setHabit] = useState({
@@ -17,9 +18,13 @@ export default () => {
     setHabit(habitCopy)
   }
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault()
-    alert('submit', habit)
+    console.log(habit)
+    alert(JSON.stringify(habit))
+    await axios.post('/api/habits', {
+      habit
+    })
   }
 
   return (
@@ -111,4 +116,8 @@ const StyledForm = styled.div`
   //   height: 20px;
   //   margin-bottom: 4px;
   // }
+
+  input[type='checkbox']:checked + code {
+    color: #09d3ac;
+  }
 `

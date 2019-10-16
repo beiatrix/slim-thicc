@@ -11,6 +11,7 @@ export default () => {
     yoga: false,
     meditate: false
   })
+  const [success, setSuccess] = useState(false)
 
   const handleChange = e => {
     const habitCopy = {...habit}
@@ -23,6 +24,7 @@ export default () => {
     await axios.post('/api/habits', {
       habit
     })
+    setSuccess(true)
   }
 
   return (
@@ -90,8 +92,10 @@ export default () => {
 
         <br />
 
-        <input type="submit" value="Submit" onSubmit={handleSubmit} />
+        <input id="sub" type="submit" value="Submit" onSubmit={handleSubmit} />
       </StyledForm>
+
+      {success && <code>:)</code>}
     </form>
   )
 }

@@ -1,12 +1,15 @@
 import React from 'react'
 import styled from 'styled-components'
 import moment from 'moment'
+import HabitForm from './habit-form'
 
 export default () => {
   return (
     <StyledDaily>
-      <h1>today is {moment().format('LL')}</h1>
-      <code>some words</code>
+      <code>
+        today is <span>{moment().format('LL')}</span>
+      </code>
+      <HabitForm />
     </StyledDaily>
   )
 }
@@ -22,9 +25,7 @@ const StyledDaily = styled.div`
   font-size: calc(10px + 2vmin);
   color: white;
 
-  h1 {
-    margin: 0;
-    font-size: 2rem;
+  span {
     color: #09d3ac;
   }
 `

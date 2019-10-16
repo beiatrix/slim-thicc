@@ -1,10 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
+import moment from 'moment'
 
 export default () => {
   return (
     <StyledDaily>
-      <h1>'hi'</h1>
+      <h1>today is {moment().format('LL')}</h1>
       <code>some words</code>
     </StyledDaily>
   )
@@ -23,7 +24,7 @@ const StyledDaily = styled.div`
 
   h1 {
     margin: 0;
-    font-size: 20vw;
+    font-size: 2rem;
     color: #09d3ac;
   }
 `

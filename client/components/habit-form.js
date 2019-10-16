@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 export default () => {
   const [habit, setHabit] = useState({
-    'protein-shake': false,
+    protein: false,
     oats: false,
     kale: false,
     run: false,
@@ -28,11 +28,11 @@ export default () => {
         <label>
           <input
             type="checkbox"
-            name="protein-shake"
-            checked={habit['protein-shake']}
+            name="protein"
+            checked={habit.protein}
             onChange={handleChange}
           />
-          <code>protein shake</code>
+          <code>protein</code>
         </label>
 
         <label>
@@ -58,7 +58,7 @@ export default () => {
         <label>
           <input
             type="checkbox"
-            name="rub"
+            name="run"
             checked={habit.run}
             onChange={handleChange}
           />
@@ -105,4 +105,10 @@ const StyledForm = styled.div`
   code {
     margin-left: 0.5rem;
   }
+
+  // input[type='checkbox'] {
+  //   width: 20px;
+  //   height: 20px;
+  //   margin-bottom: 4px;
+  // }
 `

@@ -16,9 +16,7 @@ router.get('/', async (req, res, next) => {
 router.post('/', async (req, res, next) => {
   try {
     const habitData = req.body.habit
-    console.log('REQ', req.body.habit)
     const habits = await Habit.create(habitData)
-    console.log('RES?', habits)
     res.json(habits)
   } catch (err) {
     next(err)

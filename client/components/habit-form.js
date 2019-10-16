@@ -20,8 +20,6 @@ export default () => {
 
   const handleSubmit = async e => {
     e.preventDefault()
-    console.log(habit)
-    alert(JSON.stringify(habit))
     await axios.post('/api/habits', {
       habit
     })
